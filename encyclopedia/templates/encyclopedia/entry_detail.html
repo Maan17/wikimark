@@ -1,0 +1,12 @@
+{% extends "encyclopedia/layout.html" %}
+{% load markdownify %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+<button type="button"  class="btn btn-outline-primary" ><a href="{% url 'edit_page' title=title %}"><span id="disable">Edit Page</span></a></button>
+
+    {{ entry | markdownify }}
+
+{% endblock %}

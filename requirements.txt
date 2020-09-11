@@ -1,0 +1,2 @@
+Django~=2.2.12
+django-markdownify==0.8.0

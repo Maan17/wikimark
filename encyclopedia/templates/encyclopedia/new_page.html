@@ -1,0 +1,30 @@
+{% extends "encyclopedia/layout.html" %}
+{% load markdownify %}
+
+{% block title %}
+    Create a New Page!
+{% endblock %}
+
+{% block body %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}><div class="alert alert-danger" style="width:360px;" role="alert">{{ message }}</div></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="POST" action=".">
+        <div class="form-group">
+            <label for="title">Title</label>
+                {% csrf_token %}
+                <textarea class="form-control " id="title" name="q" type="text">{{ title  }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+                {% csrf_token %}
+                <textarea class="form-control " id="textarea" name="content" type="text" >{{ content | markdownify  | safe  }}</textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+{% endblock %}

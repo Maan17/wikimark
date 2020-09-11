@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+{% load markdownify %}
+
+{% block title %}
+    Edit Page
+{% endblock %}
+
+{% block body %}
+<form method="POST" action=".">
+    <div class="form-group">
+        <label for="content">Content</label>
+            {% csrf_token %}
+            <textarea class="form-control " id="textarea" name="content" type="text" >{{ content  }}</textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{% endblock %}

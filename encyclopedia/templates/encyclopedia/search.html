@@ -1,0 +1,14 @@
+{% extends "encyclopedia/layout.html" %}
+{% load markdownify %}
+{% block title %}
+    Search results
+{% endblock %}
+
+{% block body %}
+    <h1>Did you mean?</h1>
+    <ul>
+        {% for item in lst %}
+            <li><a href="{% url 'entry_detail' title=item %}">{{ item }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
